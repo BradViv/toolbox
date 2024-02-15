@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+
+  # Building and testing environment
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ghcr.io/growlf/toolbox:testing
+    stdin_open: true
+    tty: true
+    command: ["/bin/zsh"]
+    volumes:
+    - /Users/braden/.gitconfig:/home/ubuntu/.gitconfig
+    - /Users/braden/.ssh:/home/ubuntu/.ssh
+    - /Users/braden/3rd Year/ENSF 400/lab4/toolboxBraden:/app
+    - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: "host"
